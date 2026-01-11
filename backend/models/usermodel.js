@@ -1,22 +1,39 @@
-const mongoose = require("mongoose");
-
-
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  fullname: String,
-  email: String,
-  password: String,
-  contact: Number,
-  isadmin: Boolean,
-  order: {
-    typeof: Array,
+  fullname: {
+    type: String,
+    minlength: 3,
+    maxlength: 50,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 6,
+  },
+
+  orders: {
+    type: Array,
     default: [],
   },
   cart: {
-    typeof: Array,
+    type: Array,
     default: [],
   },
-  picture: String,
+  contact: {
+    type: Number,
+  },
+  picture: {
+    type: String,
+  },
 });
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+export default User;
