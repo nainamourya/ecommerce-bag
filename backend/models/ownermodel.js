@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const ownerSchema = new mongoose.Schema({
   fullname: String,
@@ -14,4 +14,4 @@ const ownerSchema = new mongoose.Schema({
   gstin: String,
 });
 
-module.exports = mongoose.model("Owner", ownerSchema);
+export default mongoose.model("Owner", ownerSchema);

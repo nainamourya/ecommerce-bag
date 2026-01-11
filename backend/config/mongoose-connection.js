@@ -1,14 +1,19 @@
 import mongoose from "mongoose";
+import debug from "debug";
+import config from "config";
+
+const dbgr = debug("development:mongoose");
 
 mongoose
-  .connect(
-    "mongodb+srv://ecom-bag-web:naina%401234@ecommerce.pyrak.mongodb.net/ecom-bag?retryWrites=true&w=majority"
-  )
+  .connect(`${config.get("MongoURI")}/ecom-bag`)
   .then(() => {
-    console.log("Mongoose connected successfully");
+    console.log("✅ MongoDB Connected Successfully");
+    dbgr("Mongoose connected successfully");
   })
   .catch((err) => {
-    console.log("Mongoose connection error:", err);
+    console.error("❌ MongoDB Connection Error");
+    console.error(err);
+    dbgr("Mongoose connection error:", err);
   });
 
 export default mongoose.connection;
