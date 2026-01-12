@@ -5,7 +5,7 @@ import config from "config";
 const dbgr = debug("development:mongoose");
 
 mongoose
-  .connect(`${config.get("MongoURI")}/ecom-bag`)
+  .connect(config.get("MongoURI")) // ❌ remove `/ecom-bag`
   .then(() => {
     console.log("✅ MongoDB Connected Successfully");
     dbgr("Mongoose connected successfully");

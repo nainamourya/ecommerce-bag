@@ -6,6 +6,8 @@ import ownerRouter from "./routes/ownerRouter.js";
 import userRouter from "./routes/userRouter.js";
 import productRouter from "./routes/productRouter.js";
 import "./config/mongoose-connection.js"; // 🔥 DB connection
+import dotenv from "dotenv";
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
